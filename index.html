@@ -1,37 +1,51 @@
 <!doctype html>
 <html lang="en">
 <head>
- <meta charset="utf-8" />
- <meta name="viewport" content="width=device-width,initial-scale=1" />
- <title>Tamy — Valentine’s?</title>
+ <meta charset="utf-8"/>
+ <meta name="viewport" content="width=device-width, initial-scale=1"/>
+ <title>Tamy.</title>
+
  <style>
  :root{
- --bg1:#0c0012; --bg2:#260035;
- --card:#ffffff10; --ring:#ffffff2b;
- --text:#fff; --muted:#ffffffb3;
- --yes:#ff2f7a; --yes2:#ff73a7;
- --no:#ffffff18;
+ --bg1:#0b0012;
+ --bg2:#24002f;
+ --card:#ffffff10;
+ --ring:#ffffff26;
+ --text:#fff;
+ --muted:#ffffffb0;
+ --yes:#ff2f7a;
+ --yes2:#ff7ab0;
+ --no:#ffffff1a;
  }
+
  *{box-sizing:border-box}
+
  body{
- margin:0; min-height:100vh;
- font-family: ui-rounded, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+ margin:0;
+ min-height:100vh;
+ font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
  color:var(--text);
  background:
- radial-gradient(1200px 800px at 15% 15%, #ff2f7a35, transparent 60%),
- radial-gradient(1000px 700px at 85% 85%, #7f2dff35, transparent 55%),
+ radial-gradient(1200px 800px at 20% 10%, #ff2f7a30, transparent 60%),
+ radial-gradient(1000px 700px at 80% 90%, #7f2dff30, transparent 55%),
  linear-gradient(135deg, var(--bg1), var(--bg2));
- display:flex; align-items:center; justify-content:center;
- padding:24px; overflow:hidden;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ padding:24px;
+ overflow:hidden;
  }
+
  .heart{
- position:absolute; user-select:none; opacity:.35;
- filter: drop-shadow(0 6px 10px #00000055);
+ position:absolute;
+ opacity:.35;
  animation: floatUp linear infinite;
+ user-select:none;
  pointer-events:none;
+ filter: drop-shadow(0 6px 10px #00000055);
  }
  @keyframes floatUp{
- from{transform:translateY(25vh) translateX(0) rotate(0deg)}
+ from{transform:translateY(30vh) translateX(0) rotate(0deg)}
  to{transform:translateY(-120vh) translateX(40px) rotate(30deg)}
  }
 
@@ -39,262 +53,286 @@
  width:min(780px,100%);
  background:var(--card);
  border:1px solid var(--ring);
- border-radius:24px;
+ border-radius:26px;
  padding:28px;
- backdrop-filter: blur(14px);
- box-shadow: 0 25px 70px #00000055;
+ backdrop-filter: blur(16px);
+ box-shadow: 0 30px 80px #00000060;
  position:relative;
  }
- .top{
- display:flex; gap:18px; justify-content:space-between; align-items:flex-start;
- flex-wrap:wrap;
- }
- h1{margin:0; font-size: clamp(26px, 4vw, 44px); line-height:1.05}
- .sub{margin:10px 0 0; color:var(--muted); font-size:15px}
 
- .gifRow{
- margin-top:18px;
- display:grid;
- grid-template-columns: 1fr 1fr;
- gap:14px;
+ h1{
+ margin:0;
+ font-size:clamp(28px,4vw,46px);
+ line-height:1.05;
+ cursor:pointer;
  }
- .gif{
- border-radius:18px; overflow:hidden;
- border:1px solid var(--ring);
- background:#0000002a;
- aspect-ratio: 16/11;
- position:relative;
+
+ .sub{
+ margin-top:10px;
+ color:var(--muted);
+ font-size:15px;
  }
- .gif img{width:100%; height:100%; object-fit:cover; display:block}
- .tag{
- position:absolute; left:10px; bottom:10px;
- background:#00000066; border:1px solid var(--ring);
- padding:6px 10px; border-radius:999px;
- font-size:12px;
+
+ .section{
+ margin-top:22px;
+ padding:18px;
+ border-radius:18px;
+ border:1px dashed var(--ring);
+ background:#0000001a;
+ text-align:center;
  }
 
  .question{
- margin-top:18px;
- padding:16px 14px;
- border-radius:18px;
- border:1px dashed var(--ring);
- background:#00000018;
- text-align:center;
+ font-size:clamp(18px,2.6vw,26px);
+ margin:0;
  }
- .question .q{margin:0; font-size: clamp(18px, 2.6vw, 26px)}
- .question .snark{margin:10px 0 0; color:var(--muted); font-size:14px; min-height: 22px}
 
- .btnRow{
- margin-top:16px;
- display:flex; gap:12px; justify-content:center; flex-wrap:wrap;
- position:relative;
- padding-bottom:8px;
- min-height:64px;
+ .snark{
+ margin-top:10px;
+ font-size:14px;
+ color:var(--muted);
+ min-height:22px;
  }
+
+ .buttons{
+ margin-top:18px;
+ display:flex;
+ gap:14px;
+ justify-content:center;
+ position:relative;
+ min-height:74px;
+ }
+
  button{
- border:0; border-radius:14px;
- padding:12px 18px;
+ border:0;
+ border-radius:14px;
+ padding:14px 20px;
  font-size:16px;
  cursor:pointer;
  transition: transform .12s ease, filter .12s ease;
  user-select:none;
+ white-space:nowrap;
  }
- button:active{transform: translateY(1px) scale(0.99)}
+
  .yes{
- background: linear-gradient(135deg, var(--yes), var(--yes2));
+ background:linear-gradient(135deg,var(--yes),var(--yes2));
  color:#fff;
- box-shadow: 0 14px 30px #ff2f7a33;
+ box-shadow:0 16px 36px #ff2f7a40;
  }
- .yes:hover{filter:brightness(1.06); transform: translateY(-1px)}
+ .yes:hover{
+ filter:brightness(1.08);
+ transform:translateY(-1px);
+ }
+
  .no{
  background:var(--no);
  color:#fff;
  border:1px solid var(--ring);
  position:relative;
- will-change: transform;
+ will-change:transform;
  }
 
  .footer{
- margin-top: 14px;
- text-align:center;
+ margin-top:16px;
+ font-size:12px;
  color:var(--muted);
- font-size: 12px;
+ text-align:center;
+ }
+
+ .toast{
+ position:fixed;
+ left:50%;
+ bottom:28px;
+ transform:translateX(-50%);
+ background:#000000aa;
+ border:1px solid var(--ring);
+ color:#fff;
+ padding:10px 14px;
+ border-radius:12px;
+ font-size:13px;
+ backdrop-filter: blur(10px);
+ display:none;
+ box-shadow: 0 18px 50px #00000070;
+ text-align:center;
  }
 
  .modal{
- position:fixed; inset:0;
- background:#000000aa;
+ position:fixed;
+ inset:0;
+ background:#000000b0;
  display:none;
- align-items:center; justify-content:center;
- padding:22px;
+ align-items:center;
+ justify-content:center;
+ padding:24px;
  }
+
  .modalInner{
- width:min(600px,100%);
  background:#ffffff12;
  border:1px solid var(--ring);
- border-radius:22px;
- padding:20px;
- backdrop-filter: blur(16px);
- box-shadow: 0 25px 70px #00000066;
+ border-radius:24px;
+ padding:24px;
  text-align:center;
+ backdrop-filter:blur(16px);
+ width:min(600px,100%);
+ box-shadow: 0 30px 90px #00000070;
  }
- .modalInner h2{margin:0; font-size:30px}
- .modalInner p{color:var(--muted); margin:10px 0 16px}
- .bigGif{
- border-radius:18px; overflow:hidden;
+
+ .modalInner h2{
+ margin:0;
+ font-size:30px;
+ }
+
+ .modalInner p{
+ margin:12px 0 0;
+ color:var(--muted);
+ font-size:15px;
+ line-height:1.45;
+ }
+
+ .plan{
+ margin-top:16px;
+ text-align:left;
+ background:#00000022;
  border:1px solid var(--ring);
- background:#0000002a;
- aspect-ratio: 16/11;
+ border-radius:18px;
+ padding:14px;
+ font-size:14px;
  }
- .bigGif img{width:100%; height:100%; object-fit:cover; display:block}
+
  .close{
- margin-top:14px;
+ margin-top:18px;
  background:#ffffff1a;
  color:#fff;
  border:1px solid var(--ring);
- }
-
- @media (max-width: 560px){
- .gifRow{grid-template-columns:1fr}
+ border-radius:12px;
+ padding:10px 16px;
+ cursor:pointer;
  }
  </style>
 </head>
+
 <body>
 
 <script>
- // Floating hearts because we’re trying.
- const hearts = [" "," "," "," "," "," "," "," "," "];
- for(let i=0;i<22;i++){
- const s=document.createElement("div");
- s.className="heart";
- s.textContent=hearts[Math.floor(Math.random()*hearts.length)];
- s.style.left=Math.random()*100+"vw";
- s.style.animationDuration=(8+Math.random()*10)+"s";
- s.style.animationDelay=(-Math.random()*12)+"s";
- s.style.fontSize=(14+Math.random()*22)+"px";
- document.body.appendChild(s);
+ const hearts=[" "," "," "," "," "," "];
+ for(let i=0;i<20;i++){
+ const h=document.createElement("div");
+ h.className="heart";
+ h.textContent=hearts[Math.floor(Math.random()*hearts.length)];
+ h.style.left=Math.random()*100+"vw";
+ h.style.fontSize=(14+Math.random()*24)+"px";
+ h.style.animationDuration=(8+Math.random()*10)+"s";
+ h.style.animationDelay=(-Math.random()*12)+"s";
+ document.body.appendChild(h);
  }
 </script>
 
 <main class="card">
- <div class="top">
- <div>
- <h1>Tamy </h1>
- <p class="sub">I made a website to ask you out. Because being normal is overrated.</p>
- </div>
- <div style="color:var(--muted); font-size:13px; text-align:right;">
- <div id="dateLine"></div>
- <div>Built with questionable confidence </div>
- </div>
+ <h1 id="title">Tamy.</h1>
+ <p class="sub">This is me asking you to be my Valentine. We’re getting hotdog noodles.</p>
+
+ <div class="section">
+ <p class="question">Will you be my Valentine?</p>
+ <div class="snark" id="snark">This decision will be remembered.</div>
  </div>
 
- <section class="gifRow">
- <div class="gif">
- <img alt="gif 1" src="https://media.giphy.com/media/l0HlQ7LRalQqdWfao/giphy.gif" />
- <div class="tag">Me acting unbothered</div>
- </div>
- <div class="gif">
- <img alt="gif 2" src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" />
- <div class="tag">You reading this like: “anyway…”</div>
- </div>
- </section>
-
- <section class="question">
- <p class="q">Will you be my Valentine? </p>
- <p class="snark" id="snarkLine">No pressure. But also… yes pressure.</p>
- </section>
-
- <div class="btnRow" id="btnRow">
- <button class="yes" id="yesBtn">Yes </button>
- <button class="no" id="noBtn">Not yet </button>
+ <div class="buttons" id="btnRow">
+ <button class="yes" id="yesBtn">Correct answer</button>
+ <button class="no" id="noBtn">Wrong answer</button>
  </div>
 
- <div class="footer">
- P.S. The “Not yet” button is hard to click for… totally ethical reasons.
- </div>
+ <div class="footer">No pressure. Just consequences.</div>
 </main>
+
+<div class="toast" id="toast">Invalid response.</div>
 
 <div class="modal" id="modal">
  <div class="modalInner">
- <h2>Wow. You said yes. </h2>
- <p id="winText">
- I’ll try not to get insufferable about this.<br/>
- (I will get insufferable about this.)
- </p>
- <div class="bigGif">
- <img alt="celebration gif" src="https://media.giphy.com/media/3o6Zt481isNVuQI1l6/giphy.gif" />
+ <h2>As expected.</h2>
+ <p>Valentine’s plans confirmed.</p>
+
+ <div class="plan">
+ <div><b> Location:</b> Jenan. By the beach.</div>
+ <div><b> Time:</b> Golden hour. When the vibes are legally good.</div>
+ <div><b> Food:</b> Hotdog noodles. Don’t ask questions.</div>
+ <div><b> Activity:</b> Eating irresponsibly near the sea.</div>
+ <div><b> Dress code:</b> Casual. Effortless. You know the drill.</div>
+ <div><b> Bonus:</b> Beach air + good food + me behaving.</div>
  </div>
- <button class="close" id="closeBtn">Close</button>
+
+ <button class="close" id="closeBtn">Continue</button>
  </div>
 </div>
 
 <script>
- // Date
- const d = new Date();
- document.getElementById("dateLine").textContent =
- d.toLocaleDateString(undefined, { weekday:"long", year:"numeric", month:"long", day:"numeric" });
-
- // Rotating sarcasm
- const snarks = [
- "No pressure. But also… yes pressure.",
- "Choose ‘Yes’ if you want peace. Choose ‘Not yet’ if you want chaos.",
- "This is the part where you pretend to think about it.",
- "I asked the internet what to do. It said: ‘Make it cute.’ So… I made it *this*.",
- "If you hit ‘Not yet’ I’ll understand. I just won’t be happy about it. ",
- "Be honest… you’re impressed I didn’t use PowerPoint."
+ const snarks=[
+ "This decision will be remembered.",
+ "Pretend to think about it. I dare you.",
+ "You already know the answer.",
+ "Choose wisely. I’m watching.",
+ "I respect free will. This page does not.",
+ "Go ahead. Click ‘Wrong answer’.",
+ "Take your time. I’ve waited longer for worse things."
  ];
- const snarkLine = document.getElementById("snarkLine");
- let i = 0;
- setInterval(() => {
- i = (i + 1) % snarks.length;
- snarkLine.textContent = snarks[i];
- }, 3200);
 
- const noBtn = document.getElementById("noBtn");
- const yesBtn = document.getElementById("yesBtn");
- const btnRow = document.getElementById("btnRow");
- const modal = document.getElementById("modal");
- const closeBtn = document.getElementById("closeBtn");
+ const snarkEl=document.getElementById("snark");
+ let s=0;
+ setInterval(()=>{
+ s=(s+1)%snarks.length;
+ snarkEl.textContent=snarks[s];
+ },3000);
 
- // “Not yet” button dodges like it has plans
+ const toast=document.getElementById("toast");
+ function showToast(){
+ toast.style.display="block";
+ setTimeout(()=>toast.style.display="none",1400);
+ }
+
+ const noBtn=document.getElementById("noBtn");
+ const yesBtn=document.getElementById("yesBtn");
+ const btnRow=document.getElementById("btnRow");
+ const modal=document.getElementById("modal");
+ const closeBtn=document.getElementById("closeBtn");
+
+ let dodges=0, surrendered=false;
+
  function dodge(){
- const rowRect = btnRow.getBoundingClientRect();
- const btnRect = noBtn.getBoundingClientRect();
+ if(surrendered) return;
+ dodges++;
+ const row=btnRow.getBoundingClientRect();
+ const btn=noBtn.getBoundingClientRect();
+ const maxX=row.width-btn.width;
+ const x=Math.random()*maxX;
+ const dx=x-(btn.left-row.left);
+ const y=(Math.random()*140)-70;
+ noBtn.style.transform=`translate(${dx}px,${y}px) rotate(${Math.random()*14-7}deg)`;
+ showToast();
 
- const maxX = Math.max(0, rowRect.width - btnRect.width);
- const maxY = 140;
-
- const x = Math.random() * maxX;
- const y = (Math.random() * maxY) - (maxY/2);
-
- const currentX = btnRect.left - rowRect.left;
- const dx = x - currentX;
-
- noBtn.style.transform = `translate(${dx}px, ${y}px) rotate(${(Math.random()*14-7).toFixed(1)}deg)`;
+ if(dodges>=6){
+ surrendered=true;
+ noBtn.textContent="Fine. Yes.";
+ noBtn.classList.remove("no");
+ noBtn.classList.add("yes");
+ noBtn.style.transform="none";
  }
- noBtn.addEventListener("mouseenter", dodge);
- noBtn.addEventListener("mousemove", dodge);
- noBtn.addEventListener("touchstart", dodge, { passive:true });
-
- yesBtn.addEventListener("click", ()=>{
- modal.style.display="flex";
-
- // Heart burst (because we’re dramatic)
- for(let k=0;k<18;k++){
- const s=document.createElement("div");
- s.className="heart";
- s.textContent=[" "," "," "," "," "," "," "][Math.floor(Math.random()*7)];
- s.style.left=(35+Math.random()*30)+"vw";
- s.style.animationDuration=(4+Math.random()*4)+"s";
- s.style.animationDelay="0s";
- s.style.fontSize=(18+Math.random()*28)+"px";
- document.body.appendChild(s);
- setTimeout(()=>s.remove(), 6500);
  }
+
+ noBtn.addEventListener("mouseenter",dodge);
+ noBtn.addEventListener("mousemove",dodge);
+ noBtn.addEventListener("touchstart",dodge,{passive:true});
+
+ noBtn.addEventListener("click",(e)=>{
+ if(!surrendered){ e.preventDefault(); dodge(); }
+ else modal.style.display="flex";
  });
 
- closeBtn.addEventListener("click", ()=> modal.style.display="none");
- modal.addEventListener("click", (e)=>{ if(e.target===modal) modal.style.display="none"; });
+ yesBtn.addEventListener("click",()=>modal.style.display="flex");
+ closeBtn.addEventListener("click",()=>modal.style.display="none");
+ modal.addEventListener("click",e=>{if(e.target===modal) modal.style.display="none";});
+
+ document.getElementById("title").addEventListener("click",()=>{
+ alert("Relax.\nYou already won.");
+ });
 </script>
 
 </body>
