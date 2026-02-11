@@ -1,339 +1,360 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
- <meta charset="utf-8"/>
- <meta name="viewport" content="width=device-width, initial-scale=1"/>
- <title>Tamy.</title>
-
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Tamy Meme Attack Mode </title>
  <style>
  :root{
- --bg1:#0b0012;
- --bg2:#24002f;
- --card:#ffffff10;
- --ring:#ffffff26;
- --text:#fff;
- --muted:#ffffffb0;
- --yes:#ff2f7a;
- --yes2:#ff7ab0;
- --no:#ffffff1a;
+ --bg:#0b0b12;
+ --card:#141427cc;
+ --line:#ffffff1e;
+ --text:#f8f8ff;
+ --muted:#d3d3f0;
+ --hot:#ff4fd8;
+ --lime:#65ff9a;
+ --r:18px;
+ --shadow: 0 18px 55px rgba(0,0,0,.55);
  }
-
  *{box-sizing:border-box}
-
  body{
  margin:0;
- min-height:100vh;
- font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+ font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
  color:var(--text);
  background:
- radial-gradient(1200px 800px at 20% 10%, #ff2f7a30, transparent 60%),
- radial-gradient(1000px 700px at 80% 90%, #7f2dff30, transparent 55%),
- linear-gradient(135deg, var(--bg1), var(--bg2));
- display:flex;
- align-items:center;
- justify-content:center;
- padding:24px;
- overflow:hidden;
+ radial-gradient(900px 500px at 20% 0%, #ff4fd821, transparent 60%),
+ radial-gradient(900px 500px at 90% 30%, #65ff9a18, transparent 60%),
+ radial-gradient(700px 500px at 50% 100%, #7b5cff18, transparent 60%),
+ var(--bg);
+ overflow-x:hidden;
+ text-align:center;
  }
-
- .heart{
- position:absolute;
- opacity:.35;
- animation: floatUp linear infinite;
- user-select:none;
+ .wrap{max-width:1050px;margin:0 auto;padding:18px 14px 80px}
+ .topbar{
+ display:flex;justify-content:space-between;align-items:center;gap:10px;
+ padding:12px 14px;border:1px solid var(--line);border-radius:999px;
+ background:#ffffff0d;backdrop-filter: blur(10px);
+ }
+ .pill{display:inline-flex;gap:10px;align-items:center;font-size:13px;color:var(--muted)}
+ .dot{width:10px;height:10px;border-radius:99px;background:var(--hot);box-shadow:0 0 18px var(--hot)}
+ .btn{
+ cursor:pointer;border:1px solid var(--line);background:#ffffff12;color:var(--text);
+ padding:10px 12px;border-radius:999px;font-weight:700;transition:.15s transform,.15s background;
+ }
+ .btn:hover{background:#ffffff1f;transform:translateY(-1px)}
+ header{
+ margin-top:14px;padding:24px;border:1px solid var(--line);border-radius:var(--r);
+ background:linear-gradient(180deg,#ffffff10,transparent);
+ box-shadow:var(--shadow);position:relative;overflow:hidden;
+ }
+ header:before{
+ content:"";position:absolute;inset:-2px;
+ background: radial-gradient(520px 240px at 18% 18%, #ffffff14, transparent 70%);
  pointer-events:none;
- filter: drop-shadow(0 6px 10px #00000055);
  }
- @keyframes floatUp{
- from{transform:translateY(30vh) translateX(0) rotate(0deg)}
- to{transform:translateY(-120vh) translateX(40px) rotate(30deg)}
- }
-
+ h1{margin:12px 0 8px;font-size:42px;line-height:1.05;letter-spacing:-.8px}
+ .sub{margin:0 auto;max-width:80ch;color:var(--muted);line-height:1.7}
+ .grid{margin-top:14px;display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
  .card{
- width:min(780px,100%);
- background:var(--card);
- border:1px solid var(--ring);
- border-radius:26px;
- padding:28px;
- backdrop-filter: blur(16px);
- box-shadow: 0 30px 80px #00000060;
- position:relative;
+ grid-column:span 12;border:1px solid var(--line);border-radius:var(--r);
+ background:var(--card);box-shadow:var(--shadow);overflow:hidden;
  }
-
- h1{
- margin:0;
- font-size:clamp(28px,4vw,46px);
- line-height:1.05;
- cursor:pointer;
+ .pad{padding:18px}
+ h2{margin:0 0 10px;font-size:20px}
+ .tag{
+ display:inline-block;margin-top:10px;padding:6px 10px;border:1px solid #ffffff26;
+ border-radius:999px;background:#ffffff10;font-size:12px;color:var(--muted)
  }
-
- .sub{
- margin-top:10px;
- color:var(--muted);
- font-size:15px;
+ .gifWrap{aspect-ratio:16/9;background:#00000045}
+ iframe{width:100%;height:100%;border:0;display:block}
+ .cols{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+ .half{grid-column:span 12}
+ @media(min-width:900px){.half{grid-column:span 6}}
+ .bigBtn{
+ cursor:pointer;border:1px solid var(--line);background:linear-gradient(90deg,#ff4fd833,#65ff9a25);
+ color:var(--text);padding:16px 18px;border-radius:16px;font-weight:800;
+ box-shadow:var(--shadow);transition:.15s transform;
+ max-width:700px;margin:10px auto 0;
+ display:block;
  }
-
- .section{
- margin-top:22px;
- padding:18px;
- border-radius:18px;
- border:1px dashed var(--ring);
- background:#0000001a;
- text-align:center;
- }
-
- .question{
- font-size:clamp(18px,2.6vw,26px);
- margin:0;
- }
-
- .snark{
- margin-top:10px;
- font-size:14px;
- color:var(--muted);
- min-height:22px;
- }
-
- .buttons{
- margin-top:18px;
- display:flex;
- gap:14px;
- justify-content:center;
- position:relative;
- min-height:74px;
- }
-
- button{
- border:0;
- border-radius:14px;
- padding:14px 20px;
- font-size:16px;
- cursor:pointer;
- transition: transform .12s ease, filter .12s ease;
- user-select:none;
- white-space:nowrap;
- }
-
- .yes{
- background:linear-gradient(135deg,var(--yes),var(--yes2));
- color:#fff;
- box-shadow:0 16px 36px #ff2f7a40;
- }
- .yes:hover{
- filter:brightness(1.08);
- transform:translateY(-1px);
- }
-
- .no{
- background:var(--no);
- color:#fff;
- border:1px solid var(--ring);
- position:relative;
- will-change:transform;
- }
-
- .footer{
- margin-top:16px;
- font-size:12px;
- color:var(--muted);
- text-align:center;
- }
-
+ .bigBtn:hover{transform:translateY(-2px)}
  .toast{
- position:fixed;
- left:50%;
- bottom:28px;
- transform:translateX(-50%);
- background:#000000aa;
- border:1px solid var(--ring);
- color:#fff;
- padding:10px 14px;
- border-radius:12px;
- font-size:13px;
- backdrop-filter: blur(10px);
- display:none;
- box-shadow: 0 18px 50px #00000070;
- text-align:center;
+ position:fixed;left:50%;bottom:18px;transform:translateX(-50%);
+ background:#0f0f1ccc;border:1px solid var(--line);
+ padding:12px 14px;border-radius:999px;box-shadow:var(--shadow);
+ color:var(--text);backdrop-filter: blur(10px);
+ display:none;max-width:min(92vw,720px);text-align:center;
  }
-
- .modal{
- position:fixed;
- inset:0;
- background:#000000b0;
- display:none;
- align-items:center;
- justify-content:center;
- padding:24px;
+ .progress{
+ height:6px;border-radius:999px;background:#ffffff1a;margin-top:8px;overflow:hidden
  }
-
- .modalInner{
- background:#ffffff12;
- border:1px solid var(--ring);
- border-radius:24px;
- padding:24px;
- text-align:center;
- backdrop-filter:blur(16px);
- width:min(600px,100%);
- box-shadow: 0 30px 90px #00000070;
+ .bar{height:100%;width:0%;background:linear-gradient(90deg,var(--hot),var(--lime))}
+ .memeText{
+ font-size:18px;line-height:1.6;color:var(--muted)
  }
-
- .modalInner h2{
- margin:0;
- font-size:30px;
+ .danger{
+ border:1px dashed #ffffff38;background:#ffffff08;border-radius:14px;padding:12px;margin-top:12px
  }
-
- .modalInner p{
- margin:12px 0 0;
- color:var(--muted);
- font-size:15px;
- line-height:1.45;
- }
-
- .plan{
- margin-top:16px;
- text-align:left;
- background:#00000022;
- border:1px solid var(--ring);
- border-radius:18px;
- padding:14px;
- font-size:14px;
- }
-
- .close{
- margin-top:18px;
- background:#ffffff1a;
- color:#fff;
- border:1px solid var(--ring);
- border-radius:12px;
- padding:10px 16px;
- cursor:pointer;
- }
+ .footer{margin-top:16px;color:var(--muted);font-size:13px}
+ a{color:var(--text)}
  </style>
 </head>
-
 <body>
-
-<script>
- const hearts=[" "," "," "," "," "," "];
- for(let i=0;i<20;i++){
- const h=document.createElement("div");
- h.className="heart";
- h.textContent=hearts[Math.floor(Math.random()*hearts.length)];
- h.style.left=Math.random()*100+"vw";
- h.style.fontSize=(14+Math.random()*24)+"px";
- h.style.animationDuration=(8+Math.random()*10)+"s";
- h.style.animationDelay=(-Math.random()*12)+"s";
- document.body.appendChild(h);
- }
-</script>
-
-<main class="card">
- <h1 id="title">Tamy.</h1>
- <p class="sub">This is me asking you to be my Valentine. We’re getting hotdog noodles.</p>
-
- <div class="section">
- <p class="question">Will you be my Valentine?</p>
- <div class="snark" id="snark">This decision will be remembered.</div>
+ <div class="wrap">
+ <div class="topbar">
+ <div class="pill"><span class="dot"></span> OPERATION: MAKE TAMY LAUGH UNTIL SHE WHEEZES</div>
+ <button class="btn" onclick="randomRoast()">Deploy Random Compliment</button>
  </div>
 
- <div class="buttons" id="btnRow">
- <button class="yes" id="yesBtn">Correct answer</button>
- <button class="no" id="noBtn">Wrong answer</button>
+ <header>
+ <div class="pill" style="justify-content:center;margin:0 auto;">
+ <span class="dot" style="background:var(--lime);box-shadow:0 0 18px var(--lime)"></span>
+ OFFICIAL WEBSITE • VERIFIED BY: ME (SAIF) • ERROR RATE: 0%
+ </div>
+ <h1>Tamy Meme Attack Mode </h1>
+ <p class="sub">
+ Welcome Tamy. You have entered a restricted area where <b>you are legally required to smile</b>.
+ This site contains: memes, GIF reactions, and reasons you’re the best girlfriend on Earth (and probably Mars too).
+ </p>
+ <button class="bigBtn" onclick="startMemeRaid()"> START MEME RAID </button>
+ <div class="footer">Warning: may cause snort-laughing, hiccups, and “stoppp ” messages.</div>
+ </header>
+
+ <div class="grid">
+
+ <!-- Reasons (meme style) -->
+ <div class="card">
+ <div class="pad">
+ <h2> Reasons You’re The Best (Certified, Stamped, Sealed)</h2>
+ <div class="cols">
+ <div class="card half" style="background:#ffffff0b">
+ <div class="pad">
+ <h2>1) Your vibe = Instant serotonin</h2>
+ <p class="memeText">You text me once and my brain goes from “life is hard” to “we’re so back.”</p>
+ <div class="tag">Mood patch update: INSTALLED </div>
+ </div>
+ </div>
+ <div class="card half" style="background:#ffffff0b">
+ <div class="pad">
+ <h2>2) You’re funny without trying</h2>
+ <p class="memeText">You’ll say one normal sentence and I’m already laughing like a broken kettle.</p>
+ <div class="tag">Comedy DLC: ACTIVE </div>
+ </div>
  </div>
 
- <div class="footer">No pressure. Just consequences.</div>
-</main>
-
-<div class="toast" id="toast">Invalid response.</div>
-
-<div class="modal" id="modal">
- <div class="modalInner">
- <h2>As expected.</h2>
- <p>Valentine’s plans confirmed.</p>
-
- <div class="plan">
- <div><b> Location:</b> Jenan. By the beach.</div>
- <div><b> Time:</b> Golden hour. When the vibes are legally good.</div>
- <div><b> Food:</b> Hotdog noodles. Don’t ask questions.</div>
- <div><b> Activity:</b> Eating irresponsibly near the sea.</div>
- <div><b> Dress code:</b> Casual. Effortless. You know the drill.</div>
- <div><b> Bonus:</b> Beach air + good food + me behaving.</div>
+ <div class="card half" style="background:#ffffff0b">
+ <div class="pad">
+ <h2>3) You’re the standard</h2>
+ <p class="memeText">If you were an app you’d be 5 stars, no ads, no bugs, and premium features unlocked.</p>
+ <div class="tag">Best girlfriend speedrun: WR </div>
+ </div>
  </div>
 
- <button class="close" id="closeBtn">Continue</button>
+ <div class="card half" style="background:#ffffff0b">
+ <div class="pad">
+ <h2>4) You’re my peace + my chaos</h2>
+ <p class="memeText">You are the problem. You are also the solution. Iconic behavior.</p>
+ <div class="tag">Balanced like a masterpiece </div>
  </div>
-</div>
+ </div>
 
-<script>
- const snarks=[
- "This decision will be remembered.",
- "Pretend to think about it. I dare you.",
- "You already know the answer.",
- "Choose wisely. I’m watching.",
- "I respect free will. This page does not.",
- "Go ahead. Click ‘Wrong answer’.",
- "Take your time. I’ve waited longer for worse things."
+ <div class="card half" style="background:#ffffff0b">
+ <div class="pad">
+ <h2>5) You make “boring days” illegal</h2>
+ <p class="memeText">With you, even doing nothing becomes an event. A premiere. A festival.</p>
+ <div class="tag">Boredom: BANNED </div>
+ </div>
+ </div>
+
+ <div class="card half" style="background:#ffffff0b">
+ <div class="pad">
+ <h2>6) You’re my safe place</h2>
+ <p class="memeText">When I’m with you, my brain finally stops buffering.</p>
+ <div class="tag">Wi-Fi connection: STRONG </div>
+ </div>
+ </div>
+ </div>
+
+ <div class="danger">
+ <b>Scientific conclusion:</b> Tamy is the best. Anyone disagreeing must submit a written apology.
+ </div>
+ </div>
+ </div>
+
+ <!-- GIF Reactions -->
+ <div class="card half">
+ <div class="pad">
+ <h2> Me realizing you’re my girlfriend</h2>
+ <div class="gifWrap">
+ <iframe src="https://giphy.com/embed/3o6Zt481isNVuQI1l6" allowfullscreen></iframe>
+ </div>
+ <div class="tag">“I won.” - Me</div>
+ </div>
+ </div>
+
+ <div class="card half">
+ <div class="pad">
+ <h2> When you say something cute</h2>
+ <div class="gifWrap">
+ <iframe src="https://giphy.com/embed/3o7btPCcdNniyf0ArS" allowfullscreen></iframe>
+ </div>
+ <div class="tag">Heart.exe has stopped working </div>
+ </div>
+ </div>
+
+ <div class="card half">
+ <div class="pad">
+ <h2> When you roast me (lovingly)</h2>
+ <div class="gifWrap">
+ <iframe src="https://giphy.com/embed/5GoVLqeAOo6PK" allowfullscreen></iframe>
+ </div>
+ <div class="tag">I deserved it tbh</div>
+ </div>
+ </div>
+
+ <div class="card half">
+ <div class="pad">
+ <h2> When you support me</h2>
+ <div class="gifWrap">
+ <iframe src="https://giphy.com/embed/MDJ9IbxxvDUQM" allowfullscreen></iframe>
+ </div>
+ <div class="tag">Soft hours activated</div>
+ </div>
+ </div>
+
+ <!-- Meme images -->
+ <div class="card">
+ <div class="pad">
+ <h2> Meme Wall (Tamy Edition)</h2>
+ <p class="memeText">These are basically my thoughts 24/7.</p>
+ </div>
+ <div class="cols" style="padding:0 16px 16px;">
+ <div class="card half" style="background:#0f0f1c">
+ <div class="pad">
+ <h2>Me when you reply instantly</h2>
+ <img src="https://i.imgflip.com/1bij.jpg" alt="One Does Not Simply meme">
+ <div class="tag">Brain: peaceful </div>
+ </div>
+ </div>
+ <div class="card half" style="background:#0f0f1c">
+ <div class="pad">
+ <h2>Me when you’re busy</h2>
+ <img src="https://i.imgflip.com/30b1gx.jpg" alt="Drake Hotline Bling meme">
+ <div class="tag">I will survive (barely)</div>
+ </div>
+ </div>
+ <div class="card half" style="background:#0f0f1c">
+ <div class="pad">
+ <h2>When you look pretty (as usual)</h2>
+ <img src="https://i.imgflip.com/1otk96.jpg" alt="Distracted Boyfriend meme">
+ <div class="tag">Me: respectfully shocked </div>
+ </div>
+ </div>
+ <div class="card half" style="background:#0f0f1c">
+ <div class="pad">
+ <h2>Me defending you (for no reason)</h2>
+ <img src="https://i.imgflip.com/26am.jpg" alt="Grumpy Cat meme">
+ <div class="tag">Your honor, she did nothing wrong</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- Interactive Buttons -->
+ <div class="card half">
+ <div class="pad">
+ <h2> Press for a “Tamy Is The Best” Certificate</h2>
+ <button class="bigBtn" onclick="award()"> PRINT AWARD </button>
+ <p class="memeText">This is legally binding in my heart court.</p>
+ </div>
+ </div>
+
+ <div class="card half">
+ <div class="pad">
+ <h2> Secret Button (Do NOT press)</h2>
+ <button class="bigBtn" onclick="secret()"> PRESS ANYWAY </button>
+ <p class="memeText">This button has consequences.</p>
+ </div>
+ </div>
+
+ <div class="card">
+ <div class="pad">
+ <h2> Final Message (but make it meme)</h2>
+ <p class="memeText">
+ Tamy, you’re my favorite person.
+ You’re the only one I’d share fries with… and that is the highest honor.
+ <br><br>
+ If loving you was a job, I’d be employee of the month every month.
+ </p>
+ <div class="tag">I love you more than memes (and that’s scary)</div>
+ </div>
+ </div>
+
+ </div>
+ </div>
+
+ <div class="toast" id="toast">
+ <div id="toastText">Toast</div>
+ <div class="progress"><div class="bar" id="bar"></div></div>
+ </div>
+
+ <script>
+ const toasts = [
+ "Tamy detected. Initiating laughter protocol ",
+ "Warning: girlfriend too powerful. System overheating ",
+ "You are legally required to accept this compliment ",
+ "If being iconic was a crime… you’d be doing LIFE ",
+ "You make my heart do backflips like it’s in the Olympics ",
+ "Breaking news: Tamy is still the best. More at 9 "
  ];
 
- const snarkEl=document.getElementById("snark");
- let s=0;
- setInterval(()=>{
- s=(s+1)%snarks.length;
- snarkEl.textContent=snarks[s];
- },3000);
+ const randomCompliments = [
+ "You’re so pretty it’s actually unfair. Like… reportable.",
+ "You’re the reason my ‘do not disturb’ is a suggestion.",
+ "Your laugh is my favorite sound. Yes, even more than food sizzling.",
+ "If I had 1 wish, I’d wish for 2 wishes… so I can wish for you twice.",
+ "You’re the only person who can roast me and heal me in the same sentence.",
+ "You’re not just a green flag. You’re the whole football field."
+ ];
 
- const toast=document.getElementById("toast");
- function showToast(){
- toast.style.display="block";
- setTimeout(()=>toast.style.display="none",1400);
+ function showToast(text){
+ const toast = document.getElementById("toast");
+ const bar = document.getElementById("bar");
+ document.getElementById("toastText").textContent = text;
+ toast.style.display = "block";
+ bar.style.width = "0%";
+ let w = 0;
+ const interval = setInterval(() => {
+ w += 2;
+ bar.style.width = w + "%";
+ if(w >= 100){
+ clearInterval(interval);
+ toast.style.display = "none";
+ }
+ }, 30);
  }
 
- const noBtn=document.getElementById("noBtn");
- const yesBtn=document.getElementById("yesBtn");
- const btnRow=document.getElementById("btnRow");
- const modal=document.getElementById("modal");
- const closeBtn=document.getElementById("closeBtn");
-
- let dodges=0, surrendered=false;
-
- function dodge(){
- if(surrendered) return;
- dodges++;
- const row=btnRow.getBoundingClientRect();
- const btn=noBtn.getBoundingClientRect();
- const maxX=row.width-btn.width;
- const x=Math.random()*maxX;
- const dx=x-(btn.left-row.left);
- const y=(Math.random()*140)-70;
- noBtn.style.transform=`translate(${dx}px,${y}px) rotate(${Math.random()*14-7}deg)`;
- showToast();
-
- if(dodges>=6){
- surrendered=true;
- noBtn.textContent="Fine. Yes.";
- noBtn.classList.remove("no");
- noBtn.classList.add("yes");
- noBtn.style.transform="none";
- }
+ function randomRoast(){
+ const msg = randomCompliments[Math.floor(Math.random() * randomCompliments.length)];
+ showToast(msg);
  }
 
- noBtn.addEventListener("mouseenter",dodge);
- noBtn.addEventListener("mousemove",dodge);
- noBtn.addEventListener("touchstart",dodge,{passive:true});
+ function startMemeRaid(){
+ showToast(" MEME RAID STARTED. Tamy, prepare to laugh.");
+ setTimeout(()=>showToast("Step 1: Smile "), 1200);
+ setTimeout(()=>showToast("Step 2: Laugh "), 2400);
+ setTimeout(()=>showToast("Step 3: ‘Stoppp ’ message "), 3600);
+ setTimeout(()=>showToast("Step 4: Hug me (mandatory) "), 4800);
+ }
 
- noBtn.addEventListener("click",(e)=>{
- if(!surrendered){ e.preventDefault(); dodge(); }
- else modal.style.display="flex";
- });
+ function award(){
+ alert(" CERTIFICATE OF EXCELLENCE \n\nThis certifies that TAMY is:\n The best girlfriend\n The funniest\n The prettiest\n The sweetest\n\nSigned: Saif (with my whole heart) ");
+ }
 
- yesBtn.addEventListener("click",()=>modal.style.display="flex");
- closeBtn.addEventListener("click",()=>modal.style.display="none");
- modal.addEventListener("click",e=>{if(e.target===modal) modal.style.display="none";});
-
- document.getElementById("title").addEventListener("click",()=>{
- alert("Relax.\nYou already won.");
- });
-</script>
-
+ function secret(){
+ alert(" SECRET UNLOCKED \n\nCongratulations.\nYou have activated:\n‘Tamy gets unlimited kisses’ mode.\n\nNo refunds. ");
+ showToast("Kiss mode activated ");
+ }
+ </script>
 </body>
 </html>
